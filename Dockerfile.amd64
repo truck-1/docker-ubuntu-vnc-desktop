@@ -19,7 +19,7 @@ RUN apt-get update \
         mesa-utils libgl1-mesa-dri \
         lxde xvfb x11vnc \
         gtk2-engines-murrine gnome-themes-standard gtk2-engines-pixbuf gtk2-engines-murrine arc-theme \
-        firefox chromium-browser \
+        wget git \
         ttf-ubuntu-font-family ttf-wqy-zenhei \
     && add-apt-repository -r ppa:fcwu-tw/apps \
     && apt-get autoclean \
@@ -27,6 +27,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 # Additional packages require ~600MB
 # libreoffice  pinta language-pack-zh-hant language-pack-gnome-zh-hant firefox-locale-zh-hant libreoffice-l10n-zh-tw
+     && add-apt-repository -y ppa:webupd8team/atom \
+     && apt-get update \
+     && apt-get -y install atom \
+     && apt-get install libxss1 -y
+     
 
 # tini for subreap
 ARG TINI_VERSION=v0.18.0
